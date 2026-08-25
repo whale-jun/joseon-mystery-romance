@@ -1,17 +1,19 @@
 import React from 'react';
-import { X, Volume2, VolumeX, Sliders, Eye } from 'lucide-react';
+import { X, Volume2, VolumeX, Sliders, Eye, Save } from 'lucide-react';
 import { GameSettings } from '../utils/storage';
 
 interface AudioSettingsModalProps {
   settings: GameSettings;
   onUpdateSettings: (newSettings: Partial<GameSettings>) => void;
   onClose: () => void;
+  onOpenSaveLoad?: () => void;
 }
 
 export const AudioSettingsModal: React.FC<AudioSettingsModalProps> = ({
   settings,
   onUpdateSettings,
   onClose,
+  onOpenSaveLoad,
 }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md animate-fadeIn select-none pt-[max(env(safe-area-inset-top),1rem)] pb-[max(env(safe-area-inset-bottom),1rem)]">
@@ -27,7 +29,7 @@ export const AudioSettingsModal: React.FC<AudioSettingsModalProps> = ({
                 환경 설정 (環境 設定)
               </h2>
               <p className="text-xs font-batang text-slate-400">
-                배경음악, 효과음 및 텍스트 출력 속도 조절
+                소리, 저장/불러오기 및 텍스트 속도 조절
               </p>
             </div>
           </div>
@@ -41,7 +43,33 @@ export const AudioSettingsModal: React.FC<AudioSettingsModalProps> = ({
         </div>
 
         {/* Settings Controls */}
-        <div className="p-6 bg-[#0a0d14]/70 flex flex-col gap-6">
+        <div className="p-6 bg-[#0a0d14]/70 flex flex-col gap-5 overflow-y-auto max-h-[65dvh]">
+          {/* Quick Save / Load Jump Button */}
+          {onOpenSaveLoad && (
+            <div className="p-3 bg-gradient-to-r from-emerald-950/40 via-[#13281f]/60 to-emerald-950/40 border border-emerald-500/40 rounded-xl flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <Save className="w-5 h-5 text-emerald-400" />
+                <div>
+                  <span className="text-sm font-traditional font-bold text-emerald-200 block">
+                    게임 저장 / 이어하기
+                  </span>
+                  <span className="text-[11px] text-slate-400 font-batang">
+                    현재 시점 저장 및 이전 기록 불러오기
+                  </span>
+                </div>
+              </div>
+              <button
+                onClick={() => {
+                  onClose();
+                  onOpenSaveLoad();
+                }}
+                className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-black font-traditional font-bold text-xs rounded-lg transition-all cursor-pointer shadow"
+              >
+                기록 관리 ❯
+              </button>
+            </div>
+          )}
+
           {/* Mute Toggle */}
           <div className="flex items-center justify-between p-3.5 bg-[#141926] border border-slate-700/80 rounded-xl">
             <div className="flex items-center gap-3">

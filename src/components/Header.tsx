@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, Users, Save, History, Volume2, VolumeX, Heart, Shield } from 'lucide-react';
+import { BookOpen, Users, History, Settings, Heart, Shield } from 'lucide-react';
 
 interface HeaderProps {
   chapterTitle: string;
@@ -7,11 +7,8 @@ interface HeaderProps {
   trust: number;
   cluesCount: number;
   hasNewClue?: boolean;
-  isMuted: boolean;
-  onToggleMute: () => void;
   onOpenNotebook: () => void;
   onOpenRelationship: () => void;
-  onOpenSaveLoad: () => void;
   onOpenBacklog: () => void;
   onOpenSettings: () => void;
 }
@@ -22,32 +19,34 @@ export const Header: React.FC<HeaderProps> = ({
   trust,
   cluesCount,
   hasNewClue,
-  isMuted,
-  onToggleMute,
   onOpenNotebook,
   onOpenRelationship,
-  onOpenSaveLoad,
   onOpenBacklog,
-  onOpenSettings: _onOpenSettings,
+  onOpenSettings,
 }) => {
+  // Extract clean compact title (e.g. "제1장", "제2장", "제3장", "프롤로그", "최종장")
+  const shortTitle = chapterTitle.includes(':')
+    ? chapterTitle.split(':')[0].trim()
+    : chapterTitle;
+
   return (
     <header className="absolute top-0 inset-x-0 z-40 bg-gradient-to-b from-[#080a10]/98 via-[#0e121d]/90 to-transparent backdrop-blur-md border-b border-[#d4af37]/20 flex flex-col justify-center px-3 sm:px-6 select-none pt-[max(env(safe-area-inset-top),0.6rem)] pb-2 transition-all">
       <div className="flex items-center justify-between gap-2">
-        {/* Chapter Title Badge */}
-        <div className="flex items-center gap-1.5 min-w-0">
-          <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#1a233a]/80 border border-[#d4af37]/40 rounded-lg shadow-sm max-w-[170px] sm:max-w-[280px] md:max-w-md">
+        {/* Compact Chapter Title & Mobile Gauges */}
+        <div className="flex items-center gap-2 min-w-0">
+          <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#1a233a]/90 border border-[#d4af37]/50 rounded-lg shadow-sm shrink-0">
             <span className="text-amber-400 text-xs shrink-0">🌙</span>
-            <h1 className="text-[11px] sm:text-sm font-traditional font-bold text-[#f3e9d2] tracking-wider truncate">
-              {chapterTitle}
-            </h1>
+            <span className="text-xs sm:text-sm font-traditional font-bold text-[#f3e9d2] tracking-wider whitespace-nowrap">
+              {shortTitle}
+            </span>
           </div>
 
           {/* Compact Mobile Affection/Trust Pills */}
-          <div className="flex items-center gap-1.5 lg:hidden">
-            <span className="flex items-center gap-0.5 text-[10px] font-mono text-pink-300 bg-pink-950/50 border border-pink-500/30 px-1.5 py-0.5 rounded-full">
+          <div className="flex items-center gap-1.5 lg:hidden shrink-0">
+            <span className="flex items-center gap-0.5 text-[10px] font-mono text-pink-300 bg-pink-950/60 border border-pink-500/40 px-1.5 py-0.5 rounded-full">
               🌸{affection}
             </span>
-            <span className="flex items-center gap-0.5 text-[10px] font-mono text-cyan-300 bg-cyan-950/50 border border-cyan-500/30 px-1.5 py-0.5 rounded-full">
+            <span className="flex items-center gap-0.5 text-[10px] font-mono text-cyan-300 bg-cyan-950/60 border border-cyan-500/40 px-1.5 py-0.5 rounded-full">
               🗡️{trust}
             </span>
           </div>
@@ -82,12 +81,12 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
 
-        {/* Action Buttons (Touch friendly & Safe on iPhone) */}
+        {/* Action Buttons (Aligned, compact & clean) */}
         <div className="flex items-center gap-1.5 shrink-0">
           {/* Clue Notebook Button */}
           <button
             onClick={onOpenNotebook}
-            className="relative flex items-center gap-1 px-2 sm:px-3 py-1.5 bg-[#1b2234] hover:bg-[#25304a] text-[#f7f3e8] border border-[#d4af37]/40 rounded-lg text-xs font-traditional transition-all shadow-md active:scale-95 cursor-pointer touch-manipulation min-h-[36px]"
+            className="relative flex items-center gap-1 px-2 sm:px-3 py-1.5 bg-[#1b2234] hover:bg-[#25304a] text-[#f7f3e8] border border-[#d4af37]/40 rounded-lg text-xs font-traditional transition-all shadow-md active:scale-95 cursor-pointer touch-manipulation min-h-[34px]"
             title="단서 수첩 열기"
           >
             <BookOpen className="w-3.5 h-3.5 text-amber-400" />
@@ -103,44 +102,31 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Relationship Map */}
           <button
             onClick={onOpenRelationship}
-            className="p-1.5 sm:px-3 sm:py-1.5 bg-[#1b2234] hover:bg-[#25304a] text-[#f7f3e8] border border-[#d4af37]/40 rounded-lg text-xs font-traditional transition-all shadow-md active:scale-95 cursor-pointer flex items-center gap-1 touch-manipulation min-h-[36px]"
+            className="p-1.5 sm:px-2.5 sm:py-1.5 bg-[#1b2234] hover:bg-[#25304a] text-[#f7f3e8] border border-[#d4af37]/40 rounded-lg text-xs font-traditional transition-all shadow-md active:scale-95 cursor-pointer flex items-center gap-1 touch-manipulation min-h-[34px]"
             title="인물 관계도"
           >
             <Users className="w-3.5 h-3.5 text-cyan-400" />
             <span className="hidden sm:inline">관계</span>
           </button>
 
-          {/* Save / Load */}
-          <button
-            onClick={onOpenSaveLoad}
-            className="p-1.5 sm:px-3 sm:py-1.5 bg-[#1b2234] hover:bg-[#25304a] text-[#f7f3e8] border border-[#d4af37]/40 rounded-lg text-xs font-traditional transition-all shadow-md active:scale-95 cursor-pointer flex items-center gap-1 touch-manipulation min-h-[36px]"
-            title="저장 및 불러오기"
-          >
-            <Save className="w-3.5 h-3.5 text-emerald-400" />
-            <span className="hidden sm:inline">기록</span>
-          </button>
-
           {/* Backlog Log */}
           <button
             onClick={onOpenBacklog}
-            className="p-1.5 sm:px-3 sm:py-1.5 bg-[#1b2234] hover:bg-[#25304a] text-[#f7f3e8] border border-[#d4af37]/40 rounded-lg text-xs font-traditional transition-all shadow-md active:scale-95 cursor-pointer flex items-center gap-1 touch-manipulation min-h-[36px]"
+            className="p-1.5 sm:px-2.5 sm:py-1.5 bg-[#1b2234] hover:bg-[#25304a] text-[#f7f3e8] border border-[#d4af37]/40 rounded-lg text-xs font-traditional transition-all shadow-md active:scale-95 cursor-pointer flex items-center gap-1 touch-manipulation min-h-[34px]"
             title="지난 대사 보기"
           >
             <History className="w-3.5 h-3.5 text-purple-400" />
             <span className="hidden sm:inline">로그</span>
           </button>
 
-          {/* Quick Sound Toggle */}
+          {/* Consolidated Settings (Gear ⚙️) Button */}
           <button
-            onClick={onToggleMute}
-            className={`p-1.5 rounded-lg border text-xs transition-all active:scale-95 cursor-pointer touch-manipulation min-h-[36px] min-w-[36px] flex items-center justify-center ${
-              isMuted
-                ? 'bg-red-900/40 border-red-500/40 text-red-400'
-                : 'bg-[#1b2234] border-[#d4af37]/40 text-amber-400 hover:bg-[#25304a]'
-            }`}
-            title={isMuted ? '음소거 해제' : '음소거'}
+            onClick={onOpenSettings}
+            className="p-1.5 sm:px-2.5 sm:py-1.5 bg-[#1b2234] hover:bg-[#25304a] text-amber-300 border border-[#d4af37]/50 rounded-lg text-xs font-traditional transition-all shadow-md active:scale-95 cursor-pointer flex items-center gap-1 touch-manipulation min-h-[34px]"
+            title="환경 설정 (소리, 저장, 텍스트 속도)"
           >
-            {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
+            <Settings className="w-3.5 h-3.5 text-amber-400 animate-spin-slow" />
+            <span className="hidden sm:inline">설정</span>
           </button>
         </div>
       </div>

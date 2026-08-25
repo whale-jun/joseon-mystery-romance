@@ -217,14 +217,11 @@ export const App: React.FC = () => {
             trust={trust}
             cluesCount={collectedClueIds.length}
             hasNewClue={hasNewClue}
-            isMuted={settings.isMuted}
-            onToggleMute={() => handleUpdateSettings({ isMuted: !settings.isMuted })}
             onOpenNotebook={() => {
               setHasNewClue(false);
               setActiveModal('notebook');
             }}
             onOpenRelationship={() => setActiveModal('relationship')}
-            onOpenSaveLoad={() => setActiveModal('saveload')}
             onOpenBacklog={() => setActiveModal('backlog')}
             onOpenSettings={() => setActiveModal('settings')}
           />
@@ -358,6 +355,7 @@ export const App: React.FC = () => {
           settings={settings}
           onUpdateSettings={handleUpdateSettings}
           onClose={() => setActiveModal(null)}
+          onOpenSaveLoad={() => setActiveModal('saveload')}
         />
       )}
     </div>
