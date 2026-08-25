@@ -27,7 +27,7 @@ export const CipherMinigame: React.FC<CipherMinigameProps> = ({ puzzle, onSucces
   };
 
   return (
-    <div className="absolute inset-0 z-30 flex flex-col justify-between p-3 sm:p-6 select-none bg-black/70 backdrop-blur-sm pt-[max(env(safe-area-inset-top),1.2rem)] pb-[max(env(safe-area-inset-bottom),1.2rem)] overflow-y-auto">
+    <div className="absolute inset-0 z-30 flex flex-col justify-between p-3 sm:p-6 select-none bg-black/70 backdrop-blur-sm pt-[max(env(safe-area-inset-top),1.2rem)] pb-[max(env(safe-area-inset-bottom),5.5rem)] sm:pb-6 overflow-y-auto">
       {/* Top Banner */}
       <div className="w-full max-w-3xl mx-auto bg-gradient-to-r from-[#1a233a]/95 via-[#2b3a58]/95 to-[#1a233a]/95 border-2 border-amber-400/80 rounded-xl p-4 shadow-2xl flex items-center justify-between">
         <div className="flex items-center gap-3">

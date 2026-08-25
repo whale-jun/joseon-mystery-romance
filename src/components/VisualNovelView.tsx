@@ -122,7 +122,7 @@ export const VisualNovelView: React.FC<VisualNovelViewProps> = ({
   };
 
   return (
-    <div className="absolute inset-x-0 bottom-0 px-3 sm:px-8 md:px-16 z-30 flex flex-col items-center select-none pb-[max(env(safe-area-inset-bottom),0.75rem)]">
+    <div className="absolute inset-x-0 bottom-0 px-3 sm:px-8 md:px-16 z-30 flex flex-col items-center select-none pb-[max(env(safe-area-inset-bottom),5.5rem)] sm:pb-6">
       {/* Choice Buttons (If any choices present & typing finished or skipped) */}
       {choices && choices.length > 0 && !isTyping && (
         <div className="w-full max-w-3xl mb-3 flex flex-col gap-2 max-h-[42dvh] overflow-y-auto pr-1 animate-fadeIn">

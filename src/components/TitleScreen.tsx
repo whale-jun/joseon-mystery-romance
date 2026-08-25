@@ -21,7 +21,7 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({
   const unlockedEndings = getUnlockedEndings();
 
   return (
-    <div className="relative w-full h-full min-h-[100dvh] bg-gradient-to-b from-[#080b14] via-[#10172a] to-[#070910] flex flex-col justify-between p-4 sm:p-8 md:p-12 select-none overflow-hidden pt-[max(env(safe-area-inset-top),1.2rem)] pb-[max(env(safe-area-inset-bottom),1rem)]">
+    <div className="relative w-full h-full min-h-[100dvh] bg-gradient-to-b from-[#080b14] via-[#10172a] to-[#070910] flex flex-col justify-between p-4 sm:p-8 md:p-12 select-none overflow-hidden pt-[max(env(safe-area-inset-top),1.2rem)] pb-[max(env(safe-area-inset-bottom),5.5rem)] sm:pb-8">
       {/* Radiant Glowing Moon in Background */}
       <div className="absolute top-10 right-16 sm:right-28 w-44 h-44 sm:w-56 sm:h-56 rounded-full bg-[#fffae0] shadow-[0_0_100px_rgba(255,245,180,0.6)] opacity-90 pointer-events-none">
         <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#ede4ba] to-transparent opacity-50"></div>

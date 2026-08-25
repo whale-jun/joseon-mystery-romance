@@ -18,7 +18,7 @@ export const CharacterPortraits: React.FC<CharacterPortraitsProps> = ({ activeCh
   if (!activeCharacters || activeCharacters.length === 0) return null;
 
   return (
-    <div className="absolute inset-0 pointer-events-none flex items-end justify-between px-4 sm:px-16 pb-36 sm:pb-48 z-10 select-none">
+    <div className="absolute inset-0 pointer-events-none flex items-end justify-between px-4 sm:px-16 pb-52 sm:pb-60 z-10 select-none">
       {activeCharacters.map((char) => {
         const charData = CHARACTERS[char.id];
         if (!charData) return null;

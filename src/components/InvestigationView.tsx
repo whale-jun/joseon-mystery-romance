@@ -39,7 +39,7 @@ export const InvestigationView: React.FC<InvestigationViewProps> = ({
   const isReadyToComplete = inspectedSpotIds.length >= minRequired;
 
   return (
-    <div className="absolute inset-0 z-30 flex flex-col justify-between p-3 sm:p-6 select-none bg-black/50 backdrop-blur-[2px] pt-[max(env(safe-area-inset-top),1.2rem)] pb-[max(env(safe-area-inset-bottom),1.2rem)]">
+    <div className="absolute inset-0 z-30 flex flex-col justify-between p-3 sm:p-6 select-none bg-black/50 backdrop-blur-[2px] pt-[max(env(safe-area-inset-top),1.2rem)] pb-[max(env(safe-area-inset-bottom),5.5rem)] sm:pb-6">
       {/* Top Banner Guide */}
       <div className="w-full max-w-2xl mx-auto bg-gradient-to-r from-[#182238]/95 via-[#25324d]/95 to-[#182238]/95 border-2 border-amber-400/80 rounded-xl p-4 shadow-2xl flex items-center justify-between">
         <div className="flex items-center gap-3">
