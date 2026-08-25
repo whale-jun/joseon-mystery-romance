@@ -168,8 +168,8 @@ export const VisualNovelView: React.FC<VisualNovelViewProps> = ({
         <div className="absolute bottom-1.5 left-1.5 w-3.5 h-3.5 border-b-2 border-l-2 border-amber-400/70 pointer-events-none"></div>
         <div className="absolute bottom-1.5 right-1.5 w-3.5 h-3.5 border-b-2 border-r-2 border-amber-400/70 pointer-events-none"></div>
 
-        {/* Speaker Badge */}
-        <div className="absolute -top-4 sm:-top-5 left-5 sm:left-8 flex items-center gap-2 px-3 sm:px-4 py-1 sm:py-1.5 bg-gradient-to-r from-[#7a1818] via-[#a82f1b] to-[#7a1818] border-2 border-amber-400/90 rounded-xl shadow-[0_5px_15px_rgba(0,0,0,0.6)] z-20">
+        {/* Speaker Badge (Top Left Outer Edge) */}
+        <div className="absolute -top-4 sm:-top-5 left-4 sm:left-8 flex items-center gap-2 px-3 sm:px-4 py-1 sm:py-1.5 bg-gradient-to-r from-[#7a1818] via-[#a82f1b] to-[#7a1818] border-2 border-amber-400/90 rounded-xl shadow-[0_5px_15px_rgba(0,0,0,0.6)] z-20">
           {speakerChar && (
             <span className="text-base sm:text-lg filter drop-shadow">{speakerChar.avatarIcon}</span>
           )}
@@ -183,17 +183,17 @@ export const VisualNovelView: React.FC<VisualNovelViewProps> = ({
           )}
         </div>
 
-        {/* Quick Controls Bar (Top Right of dialogue box) */}
-        <div className="absolute top-2.5 right-3 sm:right-5 flex items-center gap-1.5 z-20">
+        {/* Quick Controls Bar (Top Right Outer Edge - Completely Outside Text Area) */}
+        <div className="absolute -top-4 sm:-top-5 right-4 sm:right-8 flex items-center gap-1.5 z-20">
           <button
             onClick={(e) => {
               e.stopPropagation();
               onToggleAutoPlay();
             }}
-            className={`px-2 py-0.5 rounded text-[10px] sm:text-[11px] font-traditional flex items-center gap-1 border transition-colors cursor-pointer touch-manipulation min-h-[28px] ${
+            className={`px-2.5 py-1 rounded-xl text-[10px] sm:text-[11px] font-traditional flex items-center gap-1 border shadow-md transition-all cursor-pointer touch-manipulation min-h-[30px] ${
               isAutoPlay
-                ? 'bg-amber-500/30 border-amber-400 text-amber-200'
-                : 'bg-black/50 border-slate-700 text-slate-400 hover:text-slate-200'
+                ? 'bg-amber-500/90 border-amber-300 text-black font-bold animate-pulse'
+                : 'bg-[#151a28]/95 border-slate-600 text-slate-300 hover:text-amber-200 hover:border-amber-400'
             }`}
           >
             <Play className={`w-3 h-3 ${isAutoPlay ? 'animate-spin' : ''}`} />
@@ -205,10 +205,10 @@ export const VisualNovelView: React.FC<VisualNovelViewProps> = ({
               e.stopPropagation();
               setIsSkipping(!isSkipping);
             }}
-            className={`px-2 py-0.5 rounded text-[10px] sm:text-[11px] font-traditional flex items-center gap-1 border transition-colors cursor-pointer touch-manipulation min-h-[28px] ${
+            className={`px-2.5 py-1 rounded-xl text-[10px] sm:text-[11px] font-traditional flex items-center gap-1 border shadow-md transition-all cursor-pointer touch-manipulation min-h-[30px] ${
               isSkipping
-                ? 'bg-amber-500/30 border-amber-400 text-amber-200'
-                : 'bg-black/50 border-slate-700 text-slate-400 hover:text-slate-200'
+                ? 'bg-amber-500/90 border-amber-300 text-black font-bold'
+                : 'bg-[#151a28]/95 border-slate-600 text-slate-300 hover:text-amber-200 hover:border-amber-400'
             }`}
           >
             <FastForward className="w-3 h-3" />
@@ -216,8 +216,8 @@ export const VisualNovelView: React.FC<VisualNovelViewProps> = ({
           </button>
         </div>
 
-        {/* Dialogue Text Content */}
-        <div className="mt-2.5 sm:mt-2 text-sm sm:text-base md:text-lg font-batang text-[#f3ede0] leading-relaxed whitespace-pre-line tracking-wide pr-4 overflow-y-auto max-h-[22dvh]">
+        {/* Dialogue Text Content (Clean & 100% Free of Button Overlaps) */}
+        <div className="mt-1 sm:mt-1.5 text-sm sm:text-base md:text-lg font-batang text-[#f3ede0] leading-relaxed whitespace-pre-line tracking-wide overflow-y-auto max-h-[22dvh] px-1">
           {displayedText}
           {isTyping && <span className="typewriter-cursor"></span>}
         </div>
