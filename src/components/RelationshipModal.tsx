@@ -27,7 +27,7 @@ export const RelationshipModal: React.FC<RelationshipModalProps> = ({
                 궁중 인물 관계도 및 연심(戀心)
               </h2>
               <p className="text-xs font-batang text-slate-400">
-                구중궁궐의 얽히고설킨 비밀과 두 사람의 유대
+                궁중궁궐의 얽히고설킨 비밀과 두 사람의 유대
               </p>
             </div>
           </div>

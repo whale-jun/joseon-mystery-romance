@@ -7,7 +7,7 @@ export const CHARACTERS: Record<string, Character> = {
     title: '동궁전 궁녀',
     role: '주인공 / 명석한 두뇌와 뛰어난 눈썰미',
     color: '#e07a5f',
-    description: '구중궁궐 내전의 소문과 은밀한 물건의 흐름을 꿰뚫고 있는 지혜롭고 담대한 궁녀.',
+    description: '궁중궁궐 내전의 소문과 물건의 흐름을 꿰뚫고 있는 총명한 궁녀.',
     avatarIcon: '🌸',
     avatarArt: {
       baseColor: '#e07a5f',

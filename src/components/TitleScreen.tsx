@@ -39,21 +39,11 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({
         </div>
       </div>
 
-      {/* Top Header info */}
-      <div className="z-10 flex items-center justify-between">
-        <div className="flex items-center gap-2 px-3.5 py-1.5 bg-[#141b2c]/80 border border-amber-500/30 rounded-full backdrop-blur-sm">
-          <Moon className="w-4 h-4 text-amber-300" />
-          <span className="text-xs font-traditional text-amber-200">
-            조선 궁중 로맨스 추리 비주얼 노벨
-          </span>
-        </div>
-      </div>
-
       {/* Center Title & Slogan */}
       <div className="z-10 my-auto flex flex-col items-center text-center max-w-2xl mx-auto">
         <div className="inline-flex items-center gap-2 px-4 py-1 bg-gradient-to-r from-red-950/60 via-amber-950/60 to-red-950/60 border border-amber-500/40 rounded-full mb-3 shadow-md">
           <span className="text-xs font-traditional text-amber-300">
-            구중궁궐의 어둠 속에서 피어난 단 하나의 진실
+            궁중궁궐의 어둠 속에서 피어난 단 하나의 진실
           </span>
         </div>
 
@@ -133,20 +123,6 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({
               <span>환경 설정</span>
             </button>
           </div>
-
-          {/* Quick Share Link Button for Girlfriend */}
-          <button
-            onClick={() => {
-              soundEngine.playSfx('chime');
-              const url = window.location.href;
-              navigator.clipboard?.writeText(url);
-              alert(`💌 게임 링크가 클립보드에 복사되었습니다!\n여자친구에게 카카오톡이나 메시지로 전달해보세요.\n\n링크: ${url}`);
-            }}
-            className="w-full py-2.5 bg-gradient-to-r from-pink-950/60 via-[#2d1222]/80 to-pink-950/60 hover:from-pink-900/80 hover:to-pink-900/80 text-pink-200 border border-pink-500/40 rounded-xl text-xs font-traditional transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md active:scale-95 mt-1"
-          >
-            <span>💌</span>
-            <span>게임 링크 복사하여 여자친구에게 보내기</span>
-          </button>
         </div>
       </div>
 
@@ -238,7 +214,7 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({
                 <span className="font-traditional font-bold text-pink-300 block mb-1">
                   🌸 주요 인물
                 </span>
-                <p>• <strong>연화 (궁녀):</strong> 명석한 두뇌와 뛰어난 눈썰미를 지녔으며, 구중궁궐 내전의 소문과 물건의 흐름을 꿰뚫고 있습니다.</p>
+                <p>• <strong>연화 (궁녀):</strong> 명석한 두뇌와 뛰어난 눈썰미를 지녔으며, 궁중궁궐 내전의 소문과 물건의 흐름을 꿰뚫고 있습니다.</p>
                 <p className="mt-1">• <strong>무진 (무사):</strong> 과묵하지만 연화에게만은 다정한 내금위 소속 무사로, 궐 밖 정보망과 뛰어난 무술 실력을 자랑합니다.</p>
               </div>
 
